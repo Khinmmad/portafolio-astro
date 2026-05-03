@@ -8,4 +8,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: 'static',
+  site: 'https://khinmmad.github.io',
+  base: '/portafolio-astro',
 });
