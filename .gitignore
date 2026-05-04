@@ -22,6 +22,9 @@ coverage/
 test-results/
 playwright-report/
 
+# project documentation
+progress.md
+
 # macOS-specific files
 .DS_Store
 
