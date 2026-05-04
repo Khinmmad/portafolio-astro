@@ -6,13 +6,20 @@ import About from '../components/About.tsx';
 import Projects from '../components/Projects.tsx';
 import Contact from '../components/Contact.tsx';
 import Footer from '../components/Footer.tsx';
+import CursorGlow from '../components/CursorGlow.tsx';
 ---
 
-<BaseLayout title="Isra | Portafolio">
+<BaseLayout
+  title="Isra | Portafolio"
+  description="Portafolio de desarrollo web - Ismail Ait. Proyectos open-source, automatización y herramientas para la comunidad."
+>
   <Navigation client:load />
-  <Hero client:load />
-  <About client:load />
-  <Projects client:load />
-  <Contact client:load />
+  <main id="main-content">
+    <Hero client:load />
+    <About client:load />
+    <Projects client:load />
+    <Contact client:load />
+  </main>
   <Footer />
+  <CursorGlow client:load />
 </BaseLayout>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khinmmad.github.io/portafolio-astro/sitemap-index.xml

@@ -1,0 +1,40 @@
+---
+title: "Automatización con Shell Scripts"
+description: "Cómo los scripts de bash pueden simplificar tareas repetitivas en el día a día del desarrollo."
+date: 2025-12-15
+tags: ["shell", "automatización", "linux"]
+---
+
+La automatización es una de las habilidades más valiosas para cualquier desarrollador. En este post, comparto algunos scripts útiles que he creado para optimizar mi flujo de trabajo diario.
+
+## Por qué automatizar
+
+Pasar tiempo en tareas repetitivas no solo es aburrido, sino que **desperdicia tu energía creativa**. Cada minuto que ahorras con automatización es un minuto que puedes invertir en resolver problemas más interesantes.
+
+Un buen script de shell puede:
+
+- Configurar un entorno de desarrollo completo en segundos
+- Procesar archivos en lote
+- Automatizar deploys
+- Monitorear recursos del sistema
+
+## Ejemplo práctico
+
+```bash
+#!/bin/bash
+# Script para respaldar proyectos diariamente
+
+BACKUP_DIR="$HOME/backups/$(date +%Y-%m-%d)"
+mkdir -p "$BACKUP_DIR"
+
+for dir in ~/proyectos/*/; do
+  name=$(basename "$dir")
+  tar -czf "$BACKUP_DIR/$name.tar.gz" -C "$dir" .
+done
+
+echo "Backup completado en $BACKUP_DIR"
+```
+
+## Conclusión
+
+No subestimes el poder de un buen script de shell. Empieza pequeño, itera, y pronto tendrás una colección de herramientas que te harán la vida mucho más fácil.

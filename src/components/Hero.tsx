@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowDown } from 'react-icons/hi';
 
-const roles = ['Desarrollador Web', 'Creador de Herramientas', 'Entusiasta de Linux'];
+import { roles } from '../data/roles';
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -106,9 +106,16 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
 
       <div className="absolute inset-0 bg-gradient-to-b from-dark-900/0 via-dark-900/50 to-dark-900 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(168,85,247,0.3) 0%, transparent 60%)',
+          animation: 'pulse-glow 4s ease-in-out infinite',
+        }}
+      />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -156,13 +163,13 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+            className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900"
           >
             Ver Proyectos
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 rounded-full border border-white/10 text-gray-300 font-medium hover:bg-white/5 hover:border-purple-500/50 transition-all duration-300"
+            className="px-6 py-3 rounded-full border border-white/10 text-gray-300 font-medium hover:bg-white/5 hover:border-purple-500/50 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900"
           >
             Contactar
           </a>

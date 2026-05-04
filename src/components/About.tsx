@@ -1,24 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { HiCode, HiTerminal, HiCube } from 'react-icons/hi';
-
-const skills = [
-  { name: 'JavaScript/TypeScript', level: 75, color: 'from-yellow-400 to-orange-500' },
-  { name: 'React', level: 70, color: 'from-cyan-400 to-blue-500' },
-  { name: 'Python', level: 65, color: 'from-blue-400 to-indigo-500' },
-  { name: 'Java', level: 60, color: 'from-orange-400 to-red-500' },
-  { name: 'Shell/Bash', level: 80, color: 'from-green-400 to-emerald-500' },
-  { name: 'Linux SysAdmin', level: 85, color: 'from-yellow-300 to-amber-500' },
-  { name: 'Git', level: 75, color: 'from-red-400 to-pink-500' },
-  { name: 'CSS/Tailwind', level: 70, color: 'from-sky-400 to-purple-500' },
-];
-
-const highlights = [
-  { icon: HiCode, label: 'Proyectos Web', value: 'Full-stack' },
-  { icon: HiTerminal, label: 'Scripts', value: 'Automatización' },
-  { icon: HiCube, label: 'Open Source', value: 'Contribuciones' },
-];
+import { skills } from '../data/skills';
+import { highlights } from '../data/highlights';
 
 function SkillBar({ name, level, color, index }: { name: string; level: number; color: string; index: number }) {
   const ref = useRef(null);
@@ -71,7 +55,7 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              className="p-6 rounded-2xl bg-dark-700/50 border border-white/5 text-center hover:border-purple-500/30 transition-colors"
+              className="p-6 rounded-2xl bg-dark-700/50 border border-white/5 text-center hover:border-purple-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(168,85,247,0.2)] hover:-translate-y-1"
             >
               <h.icon className="text-purple-400 mx-auto mb-3" size={28} />
               <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{h.label}</p>

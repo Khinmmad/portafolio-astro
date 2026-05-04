@@ -15,7 +15,7 @@ export interface RepoReadme {
   html_url: string;
 }
 
-const GITHUB_USERNAME = 'Khinmmad';
+const GITHUB_USERNAME = import.meta.env.PUBLIC_GITHUB_USER || 'Khinmmad';
 const GITHUB_API = 'https://api.github.com';
 
 export async function fetchRepos(): Promise<GithubRepo[]> {

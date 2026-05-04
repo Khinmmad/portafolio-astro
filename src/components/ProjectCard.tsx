@@ -52,10 +52,11 @@ export default function ProjectCard({ repo, index, onOpenReadme }: Props) {
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
         transition: 'transform 0.1s ease-out',
       }}
-      className="relative group"
+        className="relative group"
+        whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
     >
       <div
-        className="relative p-6 rounded-2xl bg-dark-700/50 border border-white/5 overflow-hidden transition-colors hover:border-purple-500/30"
+          className="relative p-6 rounded-2xl bg-dark-700/50 border border-white/5 overflow-hidden transition-all duration-300 group-hover:border-purple-500/30 group-hover:shadow-[0_0_40px_-15px_rgba(168,85,247,0.3)]"
         style={{
           background: `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(168,85,247,0.08), transparent 60%)`,
         }}
@@ -107,16 +108,16 @@ export default function ProjectCard({ repo, index, onOpenReadme }: Props) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-purple-400 rounded px-1 py-0.5"
           >
-            <FiExternalLink size={14} />
+            <FiExternalLink size={14} aria-hidden="true" />
             GitHub
           </a>
           <button
             onClick={() => onOpenReadme(repo.name)}
-            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-purple-400 transition-colors"
+            className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-purple-400 transition-colors focus-visible:ring-2 focus-visible:ring-purple-400 rounded px-1 py-0.5"
           >
-            <FiBookOpen size={14} />
+            <FiBookOpen size={14} aria-hidden="true" />
             Cómo usar
           </button>
         </div>

@@ -1,0 +1,45 @@
+---
+title: "Configurando un Servidor Linux desde Cero"
+description: "Guía paso a paso para configurar un VPS con Ubuntu, Nginx, SSL y monitoreo básico."
+date: 2026-01-20
+tags: ["linux", "servidores", "devops"]
+---
+
+Configurar un servidor puede ser intimidante la primera vez. Aquí comparto mi proceso para dejar un VPS listo para producción en menos de 30 minutos.
+
+## 1. Seguridad inicial
+
+Lo primero es crear un usuario no-root y configurar SSH:
+
+```bash
+adduser deploy
+usermod -aG sudo deploy
+```
+
+Configuramos el firewall:
+
+```bash
+ufw allow OpenSSH
+ufw enable
+```
+
+## 2. Nginx y SSL
+
+Instalamos Nginx y Certbot para SSL gratuito:
+
+```bash
+apt install nginx certbot python3-certbot-nginx
+certbot --nginx -d tudominio.com
+```
+
+## 3. Monitoreo
+
+Un servidor sin monitoreo es como conducir con los ojos vendados. Recomiendo:
+
+- **htop** para uso de recursos
+- **fail2ban** para seguridad
+- **Uptime Kuma** para monitoreo visual
+
+## Resumen
+
+Con estos pasos básicos, tu servidor estará seguro y listo para alojar aplicaciones. En futuros posts cubriré configuraciones más avanzadas como Docker y CI/CD.

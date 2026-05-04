@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import Navigation from '../../components/Navigation.tsx';
+import Footer from '../../components/Footer.tsx';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} | Blog`} description={post.data.description}>
+  <Navigation client:load />
+  <main id="main-content" class="pt-24 pb-24 px-4">
+    <article class="max-w-3xl mx-auto">
+      <header class="mb-10">
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+          <time datetime={post.data.date.toISOString().slice(0, 10)}>
+            {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {
+            post.data.tags.length > 0 && (
+              <span class="text-purple-400">{post.data.tags[0]}</span>
+            )
+          }
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+          {post.data.title}
+        </h1>
+        <p class="text-gray-400 text-lg">{post.data.description}</p>
+      </header>
+
+      <div
+        class="prose prose-invert prose-lg max-w-none
+          prose-headings:text-white prose-a:text-purple-400 prose-a:no-underline hover:prose-a:text-purple-300
+          prose-code:bg-dark-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+          prose-pre:bg-dark-900/80 prose-pre:border prose-pre:border-white/5
+          prose-img:rounded-lg prose-table:border-collapse
+          prose-th:border prose-th:border-white/10 prose-td:border prose-td:border-white/10
+          prose-th:px-3 prose-td:px-3 prose-th:py-1 prose-td:py-1"
+      >
+        <Content />
+      </div>
+
+      <footer class="mt-16 pt-8 border-t border-white/5">
+        <a href="/portafolio-astro/blog" class="text-purple-400 hover:text-purple-300 transition-colors text-sm">
+          &larr; Volver al blog
+        </a>
+      </footer>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

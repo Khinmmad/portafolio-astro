@@ -1,46 +1,59 @@
-# Astro Starter Kit: Basics
+# Ismail Ait - Portafolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Portafolio personal construido con **Astro**, **React**, **Tailwind CSS v4** y **Framer Motion**.  
+Muestra mis proyectos open-source directamente desde la API de GitHub.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+| Tecnología | Uso |
+|---|---|
+| [Astro](https://astro.build) | Static Site Generator (SSG) |
+| [React 19](https://react.dev) | Componentes interactivos |
+| [Tailwind CSS v4](https://tailwindcss.com) | Estilos utility-first |
+| [Framer Motion](https://framermotion.com) | Animaciones |
+| [react-icons](https://react-icons.github.io) | Iconos |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Estructura del proyecto
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── .github/workflows/   # CI/CD: deploy a GitHub Pages
+├── public/              # Archivos estáticos
+├── src/
+│   ├── components/      # Componentes React (.tsx)
+│   ├── content/         # Colecciones de contenido (Astro)
+│   ├── layouts/         # Layout base
+│   ├── lib/             # Cliente de API de GitHub
+│   ├── pages/           # Páginas (rutas)
+│   └── styles/          # CSS global (Tailwind)
+├── astro.config.mjs
+├── tsconfig.json
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Comandos
 
-## 🧞 Commands
+| Comando | Acción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo en `localhost:4321` |
+| `npm run build` | Build de producción a `./dist/` |
+| `npm run preview` | Preview del build local |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier |
+| `npm run typecheck` | TypeScript check |
+| `npm test` | Tests unitarios |
+| `npm run test:e2e` | Tests e2e (Playwright) |
 
-All commands are run from the root of the project, from a terminal:
+## Variables de entorno
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Copia `.env.example` a `.env` y configura:
 
-## 👀 Want to learn more?
+```bash
+PUBLIC_GITHUB_USER=tu_usuario_de_github
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Deploy
+
+El proyecto se despliega automáticamente a **GitHub Pages** al hacer push a la rama `main`.
+
+[Ver portafolio](https://khinmmad.github.io/portafolio-astro)

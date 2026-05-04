@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 - Página no encontrada" description="La página que buscas no existe.">
+  <main id="main-content" class="min-h-screen flex items-center justify-center px-4">
+    <div class="text-center">
+      <p class="text-purple-400 text-sm font-medium tracking-widest uppercase mb-4">Error 404</p>
+      <h1 class="text-6xl md:text-8xl font-extrabold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+        404
+      </h1>
+      <p class="text-gray-400 text-lg mb-8 max-w-md mx-auto">
+        La página que buscas no existe o ha sido movida.
+      </p>
+      <a
+        href="/portafolio-astro/"
+        class="inline-flex px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900"
+      >
+        Volver al inicio
+      </a>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,53 @@
+---
+import { siteConfig } from '../data/site';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  image = `${siteConfig.url}${siteConfig.basePath}/favicon.svg`,
+  type = 'website',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, siteConfig.url).href;
+---
+
+<!-- Primary Meta -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Canonical -->
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:site_name" content={siteConfig.title} />
+<meta property="og:locale" content="es_ES" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonical} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.author,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  sameAs: [`https://github.com/${siteConfig.githubUser}`],
+})} />
