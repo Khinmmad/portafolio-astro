@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
@@ -10,6 +11,4 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: 'static',
-  site: 'https://khinmmad.github.io',
-  base: '/portafolio-astro',
 });
